@@ -1,0 +1,81 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+}
+
+.bar {
+    width: 2%;
+    height: 2%;
+    background-color: #007bff;
+    border: 1px solid #004c9e;
+    margin: 0.4%;
+}
+
+#controls {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#vert-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+#vert-group div {
+    margin: 5px;
+}
+
+#speed {
+    width: 200px;
+}
+
+#visualizer {
+    display: flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+    height: 500px;
+    border: 1px solid #ced4da;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+#algorithm-details {
+    margin-top: 30px;
+}
+
+.slider-container label {
+    margin: 5px;
+}
+
+.code-block {
+    flex: 0 0 calc(50% - 10px);
+    /* 10px for a little bit of space between blocks */
+    max-width: calc(50% - 10px);
+}
+
+th,
+td {
+    border: 1px solid #ced4da;
+}
+
+pre[class*="language-"] {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #FFF;
+}
+
+pre[class*="language-"] .token.operator {
+    background-color: #FFF;
+}
+
+pre[class*="language-"] .token.comment {
+    color: #008200;
+    /* Replace with your preferred shade of green */
+}

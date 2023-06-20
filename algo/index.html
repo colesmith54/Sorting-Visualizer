@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sorting Algorithm Visualizer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 class="text-center mt-4">Sorting Algorithm Visualizer</h1>
+        </header>
+
+        <main>
+            <section id="controls" class="d-flex justify-content-between mt-4">
+                <div id="button-group">
+                    <button id="start" class="btn btn-primary">Start</button>
+                    <button id="pause" class="btn btn-warning">Pause</button>
+                    <button id="reset" class="btn btn-danger">Reset</button>
+                </div>
+
+                <div id="vert-group">
+                    <div>
+                        <label for="algorithm">Choose a sorting algorithm:</label>
+                        <select id="algorithm" class="custom-select">
+                            <option value="bubble">Bubble Sort</option>
+                            <option value="selection">Selection Sort</option>
+                            <option value="insertion">Insertion Sort</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="array-type">Choose an array type:</label>
+                        <select id="array-type" class="custom-select">
+                            <option value="one-for-each-int">One Element For Each Int</option>
+                            <option value="random">Random</option>
+                            <option value="almost-sorted">Almost Sorted</option>
+                            <option value="reverse">Reverse</option>
+                        </select>
+                    </div>
+                </div>
+
+            </section>
+
+            <section id="algorithm-details" class="mt-4">
+                <h2 id="algorithm-title">Algorithm Name</h2>
+                <p id="algorithm-description">Algorithm Description</p>
+                <table id="algo-table" class="table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Best Case</th>
+                            <th scope="col">Average Case</th>
+                            <th scope="col">Worst Case</th>
+                            <th scope="col">Space Complexity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="best-case"></td>
+                            <td id="average-case"></td>
+                            <td id="worst-case"></td>
+                            <td id="space-complexity"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="vert-group">
+                    <div class="slider-container">
+                        <label for="speed">Sorting Speed:</label>
+                        <input type="range" id="speed" name="speed" min="0" max="900" value="750">
+                    </div>
+
+                    <div class="slider-container">
+                        <label for="size">Array Size:</label>
+                        <input type="range" id="size" name="size" min="5" max="100" value="50">
+                    </div>
+                </div>
+
+                <button id="mute-button" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="currentColor" class="bi bi-volume-up" viewBox="0 0 16 16">
+                        <path
+                            d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z" />
+                        <path
+                            d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z" />
+                        <path
+                            d="M10.025 8a4.486 4.486 0 0 1-1.318 3.182L8 10.475A3.489 3.489 0 0 0 9.025 8c0-.966-.392-1.841-1.025-2.475l.707-.707A4.486 4.486 0 0 1 10.025 8zM7 4a.5.5 0 0 0-.812-.39L3.825 5.5H1.5A.5.5 0 0 0 1 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 7 12V4zM4.312 6.39 6 5.04v5.92L4.312 9.61A.5.5 0 0 0 4 9.5H2v-3h2a.5.5 0 0 0 .312-.11z" />
+                    </svg></button>
+
+            </div>
+
+            <section id="visualizer" class="mt-4"></section>
+
+            <section id="code-container" class="mt-4 d-flex justify-content-between">
+                <div class="code-block">
+                    <h2> Standard Code Implementation</h2>
+                    <pre id="code"><code class="language-javascript"></code></pre>
+                    <button id="copy-code" class="btn btn-secondary mt-2">Copy to Clipboard</button>
+                </div>
+                <div class="code-block">
+                    <h2>Optimized Code Implementation</h2>
+                    <pre id="optimized-code"><code class="language-javascript"></code></pre>
+                    <button id="copy-optimized-code" class="btn btn-secondary mt-2">Copy to Clipboard</button>
+                </div>
+            </section>
+
+        </main>
+
+        <footer></footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+
+    <script src="javascript/icons.js"></script>
+    <script src="javascript/globals.js"></script>
+
+    <script src="javascript/audio.js"></script>
+    <script src="javascript/algorithms.js"></script>
+    <script src="javascript/array-operations.js"></script>
+    <script src="javascript/step.js"></script>
+    <script src="javascript/update-description.js"></script>
+
+    <script src="javascript/events.js"></script>
+</body>
+
+</html>
