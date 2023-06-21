@@ -41,7 +41,6 @@ function resetButtonHandler() {
     document.getElementById('array-output').value = "";
 }
 
-// Helper function to update button state
 function updateButtonState(buttonid, className, disabled, innerText) {
     let btn = document.getElementById(buttonid);
     btn.className = `btn ${className}`;
@@ -49,7 +48,6 @@ function updateButtonState(buttonid, className, disabled, innerText) {
     btn.innerText = innerText;
 }
 
-// Helper function to disable inputs
 function disableInputs(isDisable) {
     document.getElementById('algorithm').disabled = isDisable;
     document.getElementById('array-type').disabled = isDisable;

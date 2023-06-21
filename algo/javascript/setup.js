@@ -14,7 +14,6 @@ function setupSortGenerators() {
     };
 }
 
-// Function to update array details on array-type selection
 function updateArrayDetails() {
     bars = [];
     if (arrayType === 'custom') {
@@ -25,7 +24,6 @@ function updateArrayDetails() {
     renderArray();
 }
 
-// Handle Custom Array Input
 function handleCustomArrayInput() {
     inputArray = document.getElementById('array-input').value.split(',').map(Number);
     if (document.getElementById('array-input').value != '') {
@@ -37,7 +35,6 @@ function handleCustomArrayInput() {
     document.getElementById('array-io').style.display = 'unset';
 }
 
-// Handle Generated Array Input
 function handleGeneratedArrayInput() {
     bars = [];
     document.getElementById('array-io').style.display = 'none';

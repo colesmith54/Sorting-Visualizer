@@ -1,4 +1,3 @@
-// Function to update algorithm details
 function updateAlgorithmDetails(algorithmKey) {
     const algorithmInfo = descriptions[algorithmKey];
     if (algorithmInfo) {
