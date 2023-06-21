@@ -2,13 +2,13 @@ function generateArrayByType() {
     bars = [];
     let arrayType = document.getElementById("array-type").value;
     switch (arrayType) {
-        case "one-for-each-int":
+        case "randomWO":
             for (let i = 1; i <= size; i++) {
                 bars.push(map(i, 1, size, 1, 100));
             }
             shuffleArray();
             break;
-        case "random":
+        case "randomW":
             for (let i = 0; i < size; i++) {
                 value = Math.floor(Math.random() * size + 1);
                 bars.push(map(value, 1, size, 1, 100));
