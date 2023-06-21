@@ -13,6 +13,7 @@ function setupSortGenerators() {
         selection: selectionSort,
         minMax: minMaxSort,
         insertion: insertionSort,
+        heap: heapSort
     };
 }
 

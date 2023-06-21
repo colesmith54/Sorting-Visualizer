@@ -100,7 +100,7 @@ function* minMaxSort() {
         if (min != i) {
             swapElements(bars, i, min);
         }
-        
+
         // update max index if it was swapped when min was moved
         if (max === i) {
             max = min;
@@ -138,6 +138,47 @@ function* insertionSort() {
             yield { current: key, compare: j, position: i };
         }
         bars[j + 1] = keybar;
+    }
+}
+
+function* heapify(n, i) {
+    let max = i;
+    let leftChild = 2 * i + 1;
+    let rightChild = 2 * i + 2;
+
+    // If left child is larger than root
+    if (leftChild < n && bars[leftChild] > bars[max]) {
+        max = leftChild;
+    }
+
+    // If right child is larger than max
+    if (rightChild < n && bars[rightChild] > bars[max]) {
+        max = rightChild;
+    }
+
+    // If max is not root
+    if (max !== i) {
+        swapElements(bars, i, max);
+        playSound((bars[i] + bars[leftChild]) / 2);
+        yield { current: i, compare: [leftChild, rightChild] };
+
+        // Heapify the affected sub-tree
+        yield* heapify(n, max);
+    }
+}
+
+function* heapSort() {
+    const len = bars.length;
+    // Build max heap
+    for (let i = Math.floor(len / 2) - 1; i >= 0; i--) {
+        yield* heapify(len, i);
+    }
+    
+    // Heap sort
+    for (let i = len - 1; i >= 0; i--) {
+        swapElements(bars, 0, i);
+        handleVerifiedBar(i);
+        yield* heapify(i, 0);
     }
 }
 

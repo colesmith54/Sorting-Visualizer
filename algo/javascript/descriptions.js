@@ -33,6 +33,13 @@ const descriptions = {
         avgTime: '\u03B8(n^2)',
         worstTime: 'O(n^2)',
         space: 'O(1)'
+    },
+    'heap': {
+        description: 'Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure. The algorithm orders the elements by first building a max heap and then repeatedly extracts the maximum from the heap and swaps it with the last unsorted element, reducing the size of the heap by one each time.',
+        bestTime: '\u03A9(n log(n))',
+        avgTime: '\u03B8(n log(n))',
+        worstTime: 'O(n log(n))',
+        space: 'O(1)'
     }
 
 };

@@ -150,6 +150,52 @@ const algoSortCode = {
     }
 
     return arr;
+}`,
+'heap': `function heapSort(arr) {
+
+    const len = arr.length;
+
+    // Function to heapify a subtree rooted at node i
+    function heapify(i, size) {
+        let max = i;
+        let left = 2 * i + 1;
+        let right = 2 * i + 2;
+
+        if (left < size && arr[left] > arr[max]) {
+            max = left;
+        }
+
+        if (right < size && arr[right] > arr[max]) {
+            max = right;
+        }
+
+        if (max != i) {
+            let temp = arr[i];
+            arr[i] = arr[max];
+            arr[max] = temp;
+
+            // Recursively heapify the affected subtree
+            heapify(max, size);
+        }
+    }
+
+    // Build the max heap (rearrange the array)
+    for (let i = Math.floor(len / 2) - 1; i >= 0; i--) {
+        heapify(i, len);
+    }
+
+    // Extract elements from heap one by one
+    for (let i = len - 1; i >= 0; i--) {
+        // Move current root to the end
+        let temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        // Call heapify on the reduced heap
+        heapify(0, i);
+    }
+
+    return arr;
 }`
 }
 
@@ -177,9 +223,9 @@ const optimizedAlgoSortCode = {
     } while (swapped)
     return arr;
 } 
-//see "Cocktail Sort" for more optimization`,
-'selection': `//see "Minmax Sort"
-//see "Heap Sort"`,
+// see "Cocktail Sort" for more optimization`,
+'selection': `// see "Minmax Sort"
+// see "Heap Sort"`,
 
 'insertion': `function insertionSort(arr) {
 
@@ -203,7 +249,7 @@ const optimizedAlgoSortCode = {
     }
     return arr;
 }`,
-'minMax': `//see "Heap Sort`,
+'minMax': `// see "Heap Sort"`,
 'cocktail': `function optimizedCocktailSort(arr) {
 
     const len = arr.length;
@@ -249,5 +295,6 @@ const optimizedAlgoSortCode = {
     }
 
     return arr;
-}`
+}`,
+'heap': `// only minor optimizations with context`
 }
