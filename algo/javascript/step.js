@@ -1,4 +1,3 @@
-// Execute the next step of the sorting process
 function nextSortStep(stepByStep) {
     if ((!isPaused || stepByStep) && currentSortGenerator) {
         setTimeout(() => {
@@ -18,14 +17,15 @@ function nextSortStep(stepByStep) {
             } else {
                 if (!isVerifying) {
                     isVerifying = true;
-                    setTimeout(() => { // Adding delay before starting verification
+                    setTimeout(() => {
                         currentSortGenerator = verifySort();
                         if (!stepByStep) {
                             nextSortStep();
                         }
                     }, 100);
                 }
-                oscillator.stop(audioContext.currentTime);
+                updateButtonState('start', 'btn btn-secondary', true, 'Start');
+                updateButtonState('pause', 'btn btn-secondary', true, 'Pause');
             }
         }, stepByStep ? 1 : speed);
     }

@@ -1,6 +1,5 @@
 function generateArrayByType() {
     bars = [];
-    let arrayType = document.getElementById("array-type").value;
     inputArray = Array.from({ length: size }, (_, i) => i + 1);
     switch (arrayType) {
         case "randomWO":
