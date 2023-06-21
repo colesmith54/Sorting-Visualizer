@@ -58,7 +58,7 @@ function disableInputs(isDisable) {
 
 function muteButtonHandler() {
     isMuted = !isMuted;
-    this.innerHTML = isMuted ? mutedIcon : volumeUpIcon;
+    this.innerHTML = isMuted ? mutedIcon : soundIcon;
 }
 
 function arrayInputHandler() {
