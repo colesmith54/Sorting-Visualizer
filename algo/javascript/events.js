@@ -51,7 +51,7 @@ function updateButtonState(buttonid, className, disabled, innerText) {
 function disableInputs(isDisable) {
     document.getElementById('algorithm').disabled = isDisable;
     document.getElementById('array-type').disabled = isDisable;
-    document.getElementById('size').disabled = isDisable;
+    document.getElementById('size').disabled = arrayType === 'custom' ? true : isDisable;
 }
 
 function muteButtonHandler() {
@@ -83,6 +83,7 @@ document.getElementById('algorithm').addEventListener('change', function () {
 document.getElementById('array-type').addEventListener('change', function () {
     arrayType = this.value;
     updateArrayDetails();
+    disableInputs(false);
 });
 
 document.getElementById('start').addEventListener('click', startButtonHandler);
