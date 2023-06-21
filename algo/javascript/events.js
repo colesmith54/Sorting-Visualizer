@@ -59,14 +59,21 @@ function muteButtonHandler() {
     this.innerHTML = isMuted ? mutedIcon : soundIcon;
 }
 
+function themeButtonHandler() {
+    isDark = !isDark;
+    this.innerHTML = isDark ? moonIcon : sunIcon;
+    document.body.classList.toggle('dark-mode');
+    document.documentElement.setAttribute('data-bs-theme', (isDark ? 'dark' : 'light'));
+};
+
 function arrayInputHandler() {
-    inputArray = this.value.split(',').map(Number);
+    inputArray = this.value.split(',').filter(item => item.trim() !== '').map(Number);
     let isValid = inputArray.every(Number.isFinite);
     bars = [];
     if (isValid) {
         size = inputArray.length;
         for (let i = 0; i < size; i++) {
-            bars.push(map(inputArray[i], Math.min(...inputArray), Math.max(...inputArray), 5, 100));
+            bars.push(map(inputArray[i], 0, Math.max(...inputArray), 1, 100));
         }
         renderArray();
         document.getElementById("error").textContent = "";
@@ -106,10 +113,6 @@ document.getElementById('copy-optimized-code').addEventListener('click', functio
     navigator.clipboard.writeText(optimizedAlgoSortCode[algorithm]);
 });
 
-window.addEventListener('load', function () {
-    updateAlgorithmDetails('bubble');
-    generateArrayByType();
-    shuffleArray();
-    renderArray();
-    updateButtonState('pause', 'btn btn-secondary', true, 'Pause');
+window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('theme-toggle').addEventListener('click', themeButtonHandler)
 });

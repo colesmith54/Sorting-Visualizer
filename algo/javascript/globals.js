@@ -7,6 +7,7 @@ let inputArray;
 let isPaused = false;
 let isVerifying = false;
 let isMuted = false;
+let isDark = false;
 let output = [];
 let size = 50;
 let speed = 11.11

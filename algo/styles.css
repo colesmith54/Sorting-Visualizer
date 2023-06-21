@@ -19,6 +19,32 @@ body {
     padding-bottom: 15px;
 }
 
+/* Dark mode */
+body.dark-mode {
+    background-color: #222;
+    color: #f8f9fa;
+}
+
+body.dark-mode .bar {
+    background-color: #fff;
+    border-color: #ddd;
+}
+
+body.dark-mode pre[class*="language-"] {
+    border-color: #444;
+    background-color: #333;
+}
+
+body.dark-mode th,
+body.dark-mode td {
+    border-color: #444;
+}
+
+body.dark-mode #visualizer {
+    border-color: #444;
+    background-color: #333;
+}
+
 .bar {
     width: 2%;
     height: 2%;
@@ -41,6 +67,20 @@ body {
 
 #controls div {
     margin: 1% 4%
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#title-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #horz-group {
@@ -108,4 +148,11 @@ td {
     border-radius: 5px;
     background-color: #fff;
     margin-bottom: 30px;
+}
+
+button#theme-toggle {
+    align-self: center;
+    padding: 10px;
+    margin-left: 15px;
+    margin-top: 15px;
 }
