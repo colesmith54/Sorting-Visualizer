@@ -18,10 +18,12 @@ function nextSortStep(stepByStep) {
             } else {
                 if (!isVerifying) {
                     isVerifying = true;
-                    currentSortGenerator = verifySort();
-                    if (!stepByStep) {
-                        nextSortStep();
-                    }
+                    setTimeout(() => { // Adding delay before starting verification
+                        currentSortGenerator = verifySort();
+                        if (!stepByStep) {
+                            nextSortStep();
+                        }
+                    }, 100);
                 }
                 oscillator.stop(audioContext.currentTime);
             }

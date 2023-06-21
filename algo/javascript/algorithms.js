@@ -1,20 +1,24 @@
+const swapElements = (arr, idx1, idx2) => {
+    const temp = arr[idx1];
+    arr[idx1] = arr[idx2];
+    arr[idx2] = temp;
+};
+
 // Bubble sort algorithm
 function* bubbleSort() {
-    let len = bars.length;
+    const len = bars.length;
     for (let i = 0; i < len; i++) {
-        swaps = 0;
+        let swaps = 0;
         for (let j = 0; j < len - i - 1; j++) {
             playSound((bars[j] + bars[j + 1]) / 2);
             yield { current: j, compare: j + 1 };
             if (bars[j] > bars[j + 1]) {
-                // swap
                 swaps += 1;
-                let tmp = bars[j];
-                bars[j] = bars[j + 1];
-                bars[j + 1] = tmp;
+                swapElements(bars, j, j+1);
             }
         }
         verified.push(len - i - 1);
+        printOutput(len - i - 1);
         if (swaps === 0) {
             break;
         }
@@ -23,7 +27,7 @@ function* bubbleSort() {
 
 // Selection sort algorithm
 function* selectionSort() {
-    let len = bars.length;
+    const len = bars.length;
     for (let i = 0; i < len; i++) {
         let min = i;
         for (let j = i + 1; j < len; j++) {
@@ -34,11 +38,10 @@ function* selectionSort() {
             playSound((bars[min] + bars[j]) / 2);
         }
         if (min !== i) {
-            let tmp = bars[i];
-            bars[i] = bars[min];
-            bars[min] = tmp;
+            swapElements(bars, i, min);
         }
         verified.push(i);
+        printOutput(i);
         playSound((bars[i] + bars[min]) / 2);
         yield { current: i, compare: min };
     }
@@ -46,47 +49,43 @@ function* selectionSort() {
 
 // Insertion sort algorithm
 function* insertionSort() {
-    let len = bars.length;
+    const len = bars.length;
     for (let i = 1; i < len; i++) {
-        let key = i
+        let key = i;
         let keybar = bars[i];
         let j = i - 1;
 
         while (j >= 0 && bars[j] > keybar) {
-
             playSound((bars[key] + bars[j]) / 2);
             if (key !== i) {
                 yield { current: key, compare: j, position: i };
             } else {
                 yield { current: key, compare: j };
             }
-
-            let tmp = bars[key];
-            bars[key] = bars[j];
-            bars[j] = tmp;
-
-            key = key - 1;
-            j = j - 1;
+            swapElements(bars, key, j);
+            key--;
+            j--;
         }
 
         if (j >= 0) {
             playSound((bars[key] + bars[j]) / 2);
             yield { current: key, compare: j, position: i };
         }
-
         bars[j + 1] = keybar;
     }
 }
 
 function* verifySort() {
-    let len = bars.length;
+    const len = bars.length;
     for (let i = 0; i < len - 1; i++) {
         playSound((bars[i] + bars[i + 1]) / 2);
         yield { current: i, compare: i + 1 };
         if (bars[i] <= bars[i + 1]) {
-            verified.push(i)
+            verified.push(i);
+            printOutput(i);
             if (i === len - 2) {
                 verified.push(i + 1);
+                printOutput(i + 1);
             }
         }
     }

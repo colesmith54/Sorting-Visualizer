@@ -5,7 +5,21 @@ document.getElementById('algorithm').addEventListener('change', function () {
 
 // Event listener for array-type selection
 document.getElementById('array-type').addEventListener('change', function () {
-    generateArrayByType();
+    bars = [];
+    if (this.value === 'custom') {
+        inputArray = document.getElementById('array-input').value.split(',').map(Number);
+        if (document.getElementById('array-input').value != '') {
+            for (let i = 0; i < size; i++) {
+                bars.push(map(inputArray[i], Math.min(...inputArray), Math.max(...inputArray), 5, 100));
+            }
+        }
+        document.getElementById('size').disabled = true;
+        document.getElementById('array-io').style.display = 'unset';
+    } else {
+        bars = [];
+        document.getElementById('array-io').style.display = 'none';
+        generateArrayByType();
+    }
     renderArray();
 });
 
@@ -52,8 +66,19 @@ document.getElementById('pause').addEventListener('click', function () {
 
 document.getElementById('reset').addEventListener('click', function () {
     verified = [];
+    bars = [];
+    output = [];
 
-    generateArrayByType();
+    if (document.getElementById('array-type').value === 'custom') {
+        size = inputArray.length;
+        for (let i = 0; i < size; i++) {
+            bars.push(map(inputArray[i], Math.min(...inputArray), Math.max(...inputArray), 5, 100));
+        }
+    } else {
+        inputArray = [];
+        generateArrayByType();
+    }
+
     renderArray();
 
     document.getElementById('start').innerText = 'Start';
@@ -63,6 +88,8 @@ document.getElementById('reset').addEventListener('click', function () {
     document.getElementById('pause').innerText = 'Pause';
     document.getElementById('pause').disabled = true;
     document.getElementById('pause').className = 'btn btn-secondary';
+
+    document.getElementById('array-output').value = "";
 
     document.getElementById('algorithm').disabled = false;
     document.getElementById('array-type').disabled = false;
@@ -99,6 +126,24 @@ document.getElementById('mute-button').addEventListener('click', function () {
             <path
                 d="M10.025 8a4.486 4.486 0 0 1-1.318 3.182L8 10.475A3.489 3.489 0 0 0 9.025 8c0-.966-.392-1.841-1.025-2.475l.707-.707A4.486 4.486 0 0 1 10.025 8zM7 4a.5.5 0 0 0-.812-.39L3.825 5.5H1.5A.5.5 0 0 0 1 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 7 12V4zM4.312 6.39 6 5.04v5.92L4.312 9.61A.5.5 0 0 0 4 9.5H2v-3h2a.5.5 0 0 0 .312-.11z" />
         </svg>`
+    }
+});
+
+document.getElementById("array-input").addEventListener("input", function() {
+
+    inputArray = this.value.split(',').map(Number);
+    let isValid = inputArray.every(Number.isFinite);
+    bars = [];
+
+    if (isValid) {
+        size = inputArray.length;
+        for (let i = 0; i < size; i++) {
+            bars.push(map(inputArray[i], Math.min(...inputArray), Math.max(...inputArray), 5, 100));
+        }
+        renderArray();
+        document.getElementById("error").textContent = "";
+    } else {
+        document.getElementById("error").textContent = "Please enter valid numbers separated by commas.";
     }
 });
 

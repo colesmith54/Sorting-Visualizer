@@ -42,8 +42,15 @@
                             <option value="randomW">Random w/ Duplicates</option>
                             <option value="almost-sorted">Almost Sorted</option>
                             <option value="reverse">Reverse</option>
+                            <option value="custom">Custom</option>
                         </select>
                     </div>
+                </div>
+
+                <div id="array-io" class="flex-fill">
+                    <label for="array-input">Input your own array:</label>
+                    <input type="text" class="form-control" id="array-input" placeholder="Enter array (e.g., 1,2,3,4,5)">
+                    <small id="error" class="form-text text-danger"></small>
                 </div>
 
             </section>
@@ -71,17 +78,23 @@
                 </table>
             </section>
 
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="vert-group">
-                    <div class="slider-container">
+            <div id="horz-group" class="d-flex justify-content-between align-items-center">
+                <div class="vert-group slider-container">
+                    <div>
                         <label for="speed">Sorting Speed:</label>
                         <input type="range" id="speed" name="speed" min="0" max="900" value="750">
                     </div>
-
-                    <div class="slider-container">
+            
+                    <div>
                         <label for="size">Array Size:</label>
                         <input type="range" id="size" name="size" min="5" max="100" value="50">
                     </div>
+                </div>
+            
+                <div id="array-out" class="flex-fill">
+                    <label for="array-output">Output:</label>
+                    <input type="text" class="form-control" id="array-output" readonly>
+                    <small id="error" class="form-text text-danger"></small>
                 </div>
 
                 <button id="mute-button" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="24"
@@ -129,7 +142,7 @@
     <script src="javascript/algorithms.js"></script>
     <script src="javascript/array-operations.js"></script>
     <script src="javascript/step.js"></script>
-    <script src="javascript/update-description.js"></script>
+    <script src="javascript/update.js"></script>
 
     <script src="javascript/events.js"></script>
 </body>
