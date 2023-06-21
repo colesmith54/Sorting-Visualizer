@@ -156,3 +156,61 @@ button#theme-toggle {
     margin-left: 15px;
     margin-top: 15px;
 }
+
+.dark-mode .language-javascript {
+    text-shadow: none;
+    color: #6ae;
+}
+
+.dark-mode pre[class*="language-"] .token.comment {
+    color: #9ab;
+  }
+  
+  .dark-mode pre[class*="language-"] .token.punctuation {
+    color: #ccc;
+  }
+  
+  .dark-mode pre[class*="language-"] .token.property {
+    color: #e60;
+  }
+  
+  .dark-mode pre[class*="language-"] .token.operator {
+    color: #d7f;
+    background-color: #333;
+  }
+  
+  .dark-mode pre[class*="language-"] .token.selector {
+    color: #8b2;
+  }
+  
+  .dark-mode pre[class*="language-"] .token.url {
+    color: #cde;
+  }
+  
+  .dark-mode pre[class*="language-"] .token.boolean {
+    color: #a8f;
+  }
+  
+  .dark-mode pre[class*="language-"] .token.atrule {
+    color: #ffb;
+  }
+  
+  .dark-mode pre[class*="language-"] .token.keyword {
+    color: #f55;
+  }
+  
+  .dark-mode pre[class*="language-"] .token.function {
+    color: #fe6;
+  }
+  
+  .dark-mode pre[class*="language-"] .token.regex {
+    color: #f91;
+  }
+  
+  .dark-mode pre[class*="language-"] .token.property-value {
+    color: #6ae;
+  }
+  
+  .dark-mode pre[class*="language-"] .token.number {
+    color: #6ae;
+  }
