@@ -72,6 +72,7 @@ function handleCustomArrayInput() {
 
 function handleGeneratedArrayInput() {
     bars = [];
+    size = document.getElementById('size').value;
     document.getElementById('array-io').style.display = 'none';
     generateArrayByType();
     renderArray();
