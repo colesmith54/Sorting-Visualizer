@@ -6,7 +6,13 @@ function nextSortStep(stepByStep) {
             if (!result.done) {
                 document.getElementById(`bar-${result.value.current}`).style.backgroundColor = "red";
                 if (result.value.compare != null) {
-                    document.getElementById(`bar-${result.value.compare}`).style.backgroundColor = "green";
+                    if (Array.isArray(result.value.compare)) {
+                        for (const compareIndex of result.value.compare) {
+                            document.getElementById(`bar-${compareIndex}`).style.backgroundColor = "green";
+                        }
+                    } else {
+                        document.getElementById(`bar-${result.value.compare}`).style.backgroundColor = "green";
+                    }
                 }
                 if (result.value.position != null) {
                     document.getElementById(`bar-${result.value.position}`).style.backgroundColor = "yellow";

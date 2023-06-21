@@ -9,8 +9,10 @@ function setupAudio() {
 function setupSortGenerators() {
     sortGenerators = {
         bubble: bubbleSort,
+        cocktail: cocktailSort,
         selection: selectionSort,
-        insertion: insertionSort
+        minMax: minMaxSort,
+        insertion: insertionSort,
     };
 }
 

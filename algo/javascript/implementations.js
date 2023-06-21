@@ -70,6 +70,86 @@ const algoSortCode = {
     }
 
     return arr;
+}`,
+
+'minMax': `function minmaxSort(arr) {
+
+    const len = arr.length;
+
+    for(let i = 0; i < Math.floor(len/2); i++) {
+
+        let min = i, max = i;
+
+        for(let j = i + 1; j < len - i; j++) {
+
+            if(arr[j] < arr[min]) {
+                min = j;
+            }
+            if(arr[j] > arr[max]) {
+                max = j;
+            }
+        }
+
+        // Swap min and max into place
+        if(min != i) {
+            let temp = arr[i];
+            arr[i] = arr[min];
+            arr[min] = temp;
+        }
+        // If max was moved when min was moved, update its index
+        if(max === i) {
+            max = min;
+        }
+        if(max != len - i - 1) {
+            let temp = arr[len - i - 1];
+            arr[len - i - 1] = arr[max];
+            arr[max] = temp;
+        }
+    }
+
+    return arr;
+}`,
+'cocktail': `function cocktailSort(arr) {
+
+    const len = arr.length;
+
+    let swapped = true;
+
+    while(swapped) {
+
+        swapped = false;
+
+        // Forward pass
+        for(let i = 0; i < len; i++) {
+            if(arr[i] > arr[i + 1]) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+
+        if(!swapped) {
+            break;
+        }
+
+        swapped = false;
+        end--;
+
+        // Backward pass
+        for(let i = len - 1; i >= 0; i--) {
+            if(arr[i] > arr[i + 1]) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+
+        start++;
+    }
+
+    return arr;
 }`
 }
 
@@ -98,9 +178,10 @@ const optimizedAlgoSortCode = {
     return arr;
 } 
 //see "Cocktail Sort" for more optimization`,
-    'selection': `see "Minmax Sort"`,
+'selection': `//see "Minmax Sort"
+//see "Heap Sort"`,
 
-    'insertion': `function insertionSort(arr) {
+'insertion': `function insertionSort(arr) {
 
     const len = arr.length;
 
@@ -120,6 +201,53 @@ const optimizedAlgoSortCode = {
         // Place the current item in the correct spot
         arr[j + 1] = current;
     }
+    return arr;
+}`,
+'minMax': `//see "Heap Sort`,
+'cocktail': `function optimizedCocktailSort(arr) {
+
+    const len = arr.length;
+
+    // Optimized by remembering which elements are
+    // already sorted, as to not pass over them again
+    let start = 0;
+    let end = len - 1;
+    let swapped = true;
+
+    while(swapped) {
+
+        swapped = false;
+
+        // Forward pass
+        for(let i = start; i < end; i++) {
+            if(arr[i] > arr[i + 1]) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+
+        if(!swapped) {
+            break;
+        }
+
+        swapped = false;
+        end--;
+
+        // Backward pass
+        for(let i = end - 1; i >= start; i--) {
+            if(arr[i] > arr[i + 1]) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+
+        start++;
+    }
+
     return arr;
 }`
 }

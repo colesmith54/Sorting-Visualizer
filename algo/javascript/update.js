@@ -24,3 +24,8 @@ function printOutput(index) {
     output[index] = sortedInput[index];
     document.getElementById('array-output').value = output.join(", ");
 }
+
+function handleVerifiedBar(index) {
+    verified.push(index);
+    printOutput(index);
+}
