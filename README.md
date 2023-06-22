@@ -4,7 +4,7 @@
 Sort-algo is a lightweight, dynamic web application designed to help users understand the functioning of various sorting algorithms. By providing a real-time visualization of the sorting process, the application makes it easier to comprehend how different algorithms work and compare their efficiencies.
 
 ## Features
-- **Visualization of Sorting Algorithms**: The application supports several sorting algorithms, including Bubble Sort, Selection Sort, and Insertion Sort. The sorting process is visualized in real-time, allowing users to observe how each algorithm operates.
+- **Visualization of Sorting Algorithms**: The application supports several sorting algorithms, including Bubble, Selection, Insertion, Cocktail, MinMax, and Heap Sort. The sorting process is visualized in real-time, allowing users to observe how each algorithm operates.
 
 - **Array Input Options**: Users can select the type of array to be sorted. Options include random arrays with or without duplicates, almost sorted arrays, reverse arrays, and the ability to input a custom array.
 
