@@ -49,24 +49,32 @@ function renderArray() {
     visualizer.innerHTML = bars.map((num, index) => `<div class="bar flex-fill" style="margin:${(-0.004 * size + 0.4).toFixed(2)}%; height:${num}%; background-color: ${verified.includes(index) ? '#FFB347' : '#007bff'};" id="bar-${index}"></div>`).join("");
 }
 
+function initializeArray(arrayType) {
+    if (arrayType === 'custom') {
+        return handleCustomArrayInput();
+    } else {
+        return handleGeneratedArrayInput();
+    }
+}
+
 function updateArrayDetails() {
     bars = [];
     isPivot = false;
-    if (arrayType === 'custom') {
-        handleCustomArrayInput();
-    } else {
-        handleGeneratedArrayInput();
-    }
+    initializeArray(arrayType);
     renderArray();
 }
 
 function handleCustomArrayInput() {
-    inputArray = document.getElementById('array-input').value.split(',').map(Number);
+    inputArray = document.getElementById('array-input').value.split(',').filter(item => item.trim() !== '').map(Number);
     size = inputArray.length;
     if (document.getElementById('array-input').value != '') {
         for (let i = 0; i < size; i++) {
             bars.push(map(inputArray[i], 0, Math.max(...inputArray), 1, 100));
         }
+    }
+    console.log(inputArray)
+    if(inputArray.length < 2) {
+        updateButtonState('start', 'btn btn-secondary', true, 'Start');
     }
     document.getElementById('size').disabled = true;
     document.getElementById('array-io').style.display = 'unset';
@@ -76,5 +84,6 @@ function handleGeneratedArrayInput() {
     bars = [];
     size = document.getElementById('size').value;
     document.getElementById('array-io').style.display = 'none';
+    updateButtonState('start', 'btn btn-primary', false, 'Start');
     generateArrayByType();
 }

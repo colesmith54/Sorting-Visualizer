@@ -34,12 +34,14 @@
                 <div id="vert-group">
                     <div>
                         <label for="algorithm">Choose a sorting algorithm:</label>
-                        <select id="algorithm" class="custom-select">
+                        <select id="algorithm" class="form-select custom-select">
+                            <option disabled>-------- O(n^2) --------</option>
                             <option value="bubble">Bubble Sort</option>
                             <option value="cocktail">Cocktail Sort</option>
                             <option value="selection">Selection Sort</option>
                             <option value="minMax">MinMax Sort</option>
                             <option value="insertion">Insertion Sort</option>
+                            <option disabled>----- O(n log(n)) ------</option>
                             <option value="heap">Heap Sort</option>
                             <option value="quick">Quick Sort</option>
                         </select>
@@ -47,7 +49,7 @@
 
                     <div>
                         <label for="array-type">Choose an array type:</label>
-                        <select id="array-type" class="custom-select">
+                        <select id="array-type" class="form-select custom-select">
                             <option value="randomWO">Random w/o Duplicates</option>
                             <option value="randomW">Random w/ Duplicates</option>
                             <option value="almost-sorted">Almost Sorted</option>
