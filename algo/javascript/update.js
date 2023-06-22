@@ -4,7 +4,7 @@ function updateComplexityCell(cell, complexity) {
         case '1':
             cell.style.border = '2px solid #008000';
             break;
-        case 'log n':
+        case 'log(n)':
             cell.style.border = '2px solid #ADFF2F';
             break;
         case 'n':

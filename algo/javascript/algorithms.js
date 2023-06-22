@@ -182,6 +182,41 @@ function* heapSort() {
     }
 }
 
+function* quickSortHelper(start, end) {
+    if (start >= end) {
+        if (start == end) {
+            handleVerifiedBar(start);
+        }
+        return;
+    }
+
+    let pivotIndex = start;
+    let pivotValue = bars[end];
+    indexPivot = end;
+
+    for (let i = start; i < end; i++) {
+        yield { current: i, compare: end, position: pivotIndex };
+        if (bars[i] < pivotValue) {
+            swapElements(bars, i, pivotIndex);
+            pivotIndex++;
+        }
+    }
+
+    swapElements(bars, pivotIndex, end);
+    handleVerifiedBar(pivotIndex); // Pivot is at its correct position now
+
+    if (pivotIndex > 0) {
+        yield* quickSortHelper(start, pivotIndex - 1);
+    }
+    if (pivotIndex < end) {
+        yield* quickSortHelper(pivotIndex + 1, end);
+    }
+}
+
+function* quickSort() {
+    yield* quickSortHelper(0, bars.length - 1);
+}
+
 function* verifySort() {
     const len = bars.length;
     for (let i = 0; i < len - 1; i++) {

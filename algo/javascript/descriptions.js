@@ -40,5 +40,12 @@ const descriptions = {
         avgTime: 'n log(n)',
         worstTime: 'n log(n)',
         space: '1'
+    },
+    'quick': {
+        description: 'QuickSort is an efficient, recursive, comparison-based sorting algorithm. It operates by dividing the input into two smaller arrays around a chosen pivot element. The process is then repeated for the smaller arrays.',
+        bestTime: 'n log(n)',
+        avgTime: 'n log(n)',
+        worstTime: 'n^2',
+        space: 'log(n)'
     }
 };

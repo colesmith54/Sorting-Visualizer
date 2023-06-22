@@ -13,13 +13,20 @@ function setupSortGenerators() {
         selection: selectionSort,
         minMax: minMaxSort,
         insertion: insertionSort,
-        heap: heapSort
+        heap: heapSort,
+        quick: quickSort
     };
+}
+
+function setupPivotLine() {
+    pivotLine.id = "pivot-line" 
+    pivotLine.style = "position: absolute; width: 100%; border-top: 1px dashed;"
 }
 
 window.onload = function () {
     setupAudio();
     setupSortGenerators();
+    setupPivotLine();
     updateAlgorithmDetails('bubble');
     generateArrayByType();
     shuffleArray();
