@@ -55,7 +55,6 @@ function updateAlgorithmDetails(algorithmKey) {
     }
 }
 
-
 function updateCodeDisplay(selector, code) {
     let codeElement = document.querySelector(selector);
     codeElement.innerHTML = code;
@@ -71,4 +70,19 @@ function printOutput(index) {
 function handleVerifiedBar(index) {
     verified.push(index);
     printOutput(index);
+}
+
+function updatePivotLine() {
+    if (document.getElementById('algorithm').value === 'quick') {
+        const visualizer = document.getElementById('visualizer');
+        const barElements = document.getElementsByClassName('bar');
+        const correspondingBar = barElements[indexPivot];
+        const pivotLineHeight = pivotLine.offsetHeight;
+        const pivotLinePosition = correspondingBar.offsetTop - pivotLineHeight;
+
+        pivotLine.style.top = `${pivotLinePosition}px`;
+        pivotLine.style.width = `${visualizer.offsetWidth - 40}px`;
+
+        visualizer.appendChild(pivotLine);
+    }
 }

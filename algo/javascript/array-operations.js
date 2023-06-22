@@ -47,17 +47,7 @@ function shuffleArray() {
 function renderArray() {
     const visualizer = document.getElementById('visualizer');
     visualizer.innerHTML = bars.map((num, index) => `<div class="bar flex-fill" style="margin:${(-0.004 * size + 0.4).toFixed(2)}%; height:${num}%; background-color: ${verified.includes(index) ? '#FFB347' : '#007bff'};" id="bar-${index}"></div>`).join("");
-    if (document.getElementById('algorithm').value === 'quick') {
-        const barElements = document.getElementsByClassName('bar');
-        const correspondingBar = barElements[indexPivot];
-        const pivotLineHeight = pivotLine.offsetHeight;
-        const pivotLinePosition = correspondingBar.offsetTop - pivotLineHeight;
-
-        pivotLine.style.top = `${pivotLinePosition}px`;
-        pivotLine.style.width = `${visualizer.offsetWidth - 40}px`;
-
-        visualizer.appendChild(pivotLine);
-    }
+    updatePivotLine();
 }
 
 function updateArrayDetails() {
