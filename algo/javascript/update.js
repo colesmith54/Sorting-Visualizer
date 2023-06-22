@@ -52,6 +52,8 @@ function updateAlgorithmDetails(algorithmKey) {
 
         updateCodeDisplay('#code code', algoSortCode[algorithmKey]);
         updateCodeDisplay('#optimized-code code', optimizedAlgoSortCode[algorithmKey]);
+
+        updatePivotLine();
     }
 }
 
@@ -73,8 +75,8 @@ function handleVerifiedBar(index) {
 }
 
 function updatePivotLine() {
-    if (document.getElementById('algorithm').value === 'quick') {
-        const visualizer = document.getElementById('visualizer');
+    const visualizer = document.getElementById('visualizer');
+    if (document.getElementById('algorithm').value === 'quick' && !isVerifying) {
         const barElements = document.getElementsByClassName('bar');
         const correspondingBar = barElements[indexPivot];
         const pivotLineHeight = pivotLine.offsetHeight;
@@ -84,5 +86,9 @@ function updatePivotLine() {
         pivotLine.style.width = `${visualizer.offsetWidth - 40}px`;
 
         visualizer.appendChild(pivotLine);
+    } else {
+        if (visualizer.contains(pivotLine)) {
+            visualizer.removeChild(pivotLine);
+        }
     }
 }

@@ -47,7 +47,6 @@ function shuffleArray() {
 function renderArray() {
     const visualizer = document.getElementById('visualizer');
     visualizer.innerHTML = bars.map((num, index) => `<div class="bar flex-fill" style="margin:${(-0.004 * size + 0.4).toFixed(2)}%; height:${num}%; background-color: ${verified.includes(index) ? '#FFB347' : '#007bff'};" id="bar-${index}"></div>`).join("");
-    updatePivotLine();
 }
 
 function updateArrayDetails() {
@@ -57,11 +56,11 @@ function updateArrayDetails() {
     } else {
         handleGeneratedArrayInput();
     }
-    renderArray();
 }
 
 function handleCustomArrayInput() {
     inputArray = document.getElementById('array-input').value.split(',').map(Number);
+    size = inputArray.length;
     if (document.getElementById('array-input').value != '') {
         for (let i = 0; i < size; i++) {
             bars.push(map(inputArray[i], 0, Math.max(...inputArray), 1, 100));
@@ -69,6 +68,7 @@ function handleCustomArrayInput() {
     }
     document.getElementById('size').disabled = true;
     document.getElementById('array-io').style.display = 'unset';
+    renderArray();
 }
 
 function handleGeneratedArrayInput() {

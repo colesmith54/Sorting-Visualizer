@@ -39,4 +39,5 @@ function nextSortStep(stepByStep) {
             }
         }, stepByStep ? 1 : speed);
     }
+    updatePivotLine();
 }
