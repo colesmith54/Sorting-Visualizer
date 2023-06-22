@@ -1,5 +1,6 @@
 // Event handlers for buttons
 function startButtonHandler() {
+    isRunning = true;
     algorithm = document.getElementById('algorithm').value;
     if (!currentSortGenerator) {
         currentSortGenerator = sortGenerators[algorithm]();
@@ -31,6 +32,8 @@ function resetButtonHandler() {
     output = [];
 
     currentSortGenerator = null;
+    
+    isRunning = false;
     isPaused = false;
     isVerifying = false;
 

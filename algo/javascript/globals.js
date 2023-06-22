@@ -5,6 +5,7 @@ let bars = [];
 let currentSortGenerator = null;
 let inputArray;
 let isPaused = false;
+let isRunning = false;
 let isVerifying = false;
 let isMuted = false;
 let isDark = false;

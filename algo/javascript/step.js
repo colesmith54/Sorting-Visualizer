@@ -35,6 +35,7 @@ function nextSortStep(stepByStep) {
                         }
                     }, 100);
                 }
+                isRunning = false;
                 updateButtonState('start', 'btn btn-secondary', true, 'Start');
                 updateButtonState('pause', 'btn btn-secondary', true, 'Pause');
             }
