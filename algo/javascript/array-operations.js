@@ -51,11 +51,13 @@ function renderArray() {
 
 function updateArrayDetails() {
     bars = [];
+    isPivot = false;
     if (arrayType === 'custom') {
         handleCustomArrayInput();
     } else {
         handleGeneratedArrayInput();
     }
+    renderArray();
 }
 
 function handleCustomArrayInput() {
@@ -68,7 +70,6 @@ function handleCustomArrayInput() {
     }
     document.getElementById('size').disabled = true;
     document.getElementById('array-io').style.display = 'unset';
-    renderArray();
 }
 
 function handleGeneratedArrayInput() {
@@ -76,5 +77,4 @@ function handleGeneratedArrayInput() {
     size = document.getElementById('size').value;
     document.getElementById('array-io').style.display = 'none';
     generateArrayByType();
-    renderArray();
 }

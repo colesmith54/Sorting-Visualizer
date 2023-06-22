@@ -230,6 +230,7 @@ function* quickSortHelper(start, end) {
 }
 
 function* quickSort() {
+    isPivot = true;
     yield* quickSortHelper(0, bars.length - 1);
 }
 

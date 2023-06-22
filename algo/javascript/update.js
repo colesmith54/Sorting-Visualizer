@@ -68,7 +68,7 @@ function handleVerifiedBar(index) {
 
 function updatePivotLine() {
     const visualizer = document.getElementById('visualizer');
-    if (isRunning && document.getElementById('algorithm').value === 'quick' && !isVerifying) {
+    if (isRunning && isPivot) {
         const barElements = document.getElementsByClassName('bar');
         const correspondingBar = barElements[indexPivot];
         const pivotLineHeight = pivotLine.offsetHeight;

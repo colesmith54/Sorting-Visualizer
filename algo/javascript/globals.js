@@ -12,6 +12,7 @@ let isDark = false;
 let output = [];
 let pivotLine = document.createElement('div');
 let indexPivot = null;
+let isPivot = false;
 let size = 50;
 let speed = 11.11
 let verified = [];
