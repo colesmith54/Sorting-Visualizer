@@ -3,6 +3,7 @@ function nextSortStep(stepByStep) {
         setTimeout(() => {
             let result = currentSortGenerator.next();
             renderArray();
+            updatePivotLine();
             if (!result.done) {
                 if (result.value.current != null) {
                     document.getElementById(`bar-${result.value.current}`).style.backgroundColor = "red";
@@ -39,5 +40,4 @@ function nextSortStep(stepByStep) {
             }
         }, stepByStep ? 1 : speed);
     }
-    updatePivotLine();
 }
