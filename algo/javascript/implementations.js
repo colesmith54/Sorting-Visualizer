@@ -196,7 +196,47 @@ const algoSortCode = {
     }
 
     return arr;
-}`
+}`,
+'quick': `function quickSort(arr) {
+    function partition(start, end) {
+        let pivotValue = arr[end];
+        let pivotIndex = start;
+
+        for (let i = start; i < end; i++) {
+            if (arr[i] < pivotValue) {
+                // Swap elements at indices i and pivotIndex
+                let temp = arr[i];
+                arr[i] = arr[pivotIndex];
+                arr[pivotIndex] = temp;
+                pivotIndex++;
+            }
+        }
+
+        // Swap pivot element with element on pivot index
+        let temp = arr[end];
+        arr[end] = arr[pivotIndex];
+        arr[pivotIndex] = temp;
+
+        return pivotIndex;
+    }
+
+    function quickSortHelper(start, end) {
+        if (start < end) {
+            let pivotIndex = partition(start, end);
+
+            // Recursively call the helper for elements on
+            // the left of pivot and on the right of pivot
+            quickSortHelper(start, pivotIndex - 1);
+            quickSortHelper(pivotIndex + 1, end);
+        }
+    }
+
+    quickSortHelper(0, arr.length - 1);
+    return arr;
+}
+// Always using the end element can produce consistently
+// bad pivots when the array is already almost sorted.
+// See optimized code for use of the median element as a pivot.`
 }
 
 const optimizedAlgoSortCode = {
@@ -223,7 +263,7 @@ const optimizedAlgoSortCode = {
     } while (swapped)
     return arr;
 } 
-// see "Cocktail Sort" for more optimization`,
+// See "Cocktail Sort" for more optimization`,
 'selection': `// see "Minmax Sort"
 // see "Heap Sort"`,
 
@@ -249,7 +289,7 @@ const optimizedAlgoSortCode = {
     }
     return arr;
 }`,
-'minMax': `// see "Heap Sort"`,
+'minMax': `// See "Heap Sort"`,
 'cocktail': `function optimizedCocktailSort(arr) {
 
     const len = arr.length;
@@ -296,5 +336,51 @@ const optimizedAlgoSortCode = {
 
     return arr;
 }`,
-'heap': `// only minor optimizations with context`
+'heap': `// Only minor optimizations with context`,
+'quick': `function optimizedQuickSort(arr) {
+    function medianOfThree(a, b, c) {
+        if ((arr[a] - arr[b]) * (arr[c] - arr[a]) >= 0) {
+            return a;
+        } else if ((arr[b] - arr[a]) * (arr[c] - arr[b]) >= 0) {
+            return b;
+        } else {
+            return c;
+        }
+    }
+
+    function partition(start, end) {
+        let mid = Math.floor((start + end) / 2);
+        let pivotIndex = medianOfThree(start, mid, end);
+        let pivotValue = arr[pivotIndex];
+
+        // Move the pivot to the end
+        [arr[pivotIndex], arr[end]] = [arr[end], arr[pivotIndex]];
+        pivotIndex = start;
+
+        for (let i = start; i < end; i++) {
+            if (arr[i] < pivotValue) {
+                [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
+                pivotIndex++;
+            }
+        }
+
+        // Move pivot to its final place
+        [arr[pivotIndex], arr[end]] = [arr[end], arr[pivotIndex]];
+        return pivotIndex;
+    }
+
+    function quickSortHelper(start, end) {
+        if (start >= end) {
+            return;
+        }
+
+        let pivotIndex = partition(start, end);
+
+        quickSortHelper(start, pivotIndex - 1);
+        quickSortHelper(pivotIndex + 1, end);
+    }
+
+    quickSortHelper(0, arr.length - 1);
+    return arr;
+}`
 }

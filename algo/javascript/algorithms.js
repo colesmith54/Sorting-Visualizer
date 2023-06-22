@@ -182,6 +182,16 @@ function* heapSort() {
     }
 }
 
+function medianOfThree(a, b, c) {
+    if ((bars[a] - bars[b]) * (bars[c] - bars[a]) >= 0) {
+        return a;
+    } else if ((bars[b] - bars[a]) * (bars[c] - bars[b]) >= 0) {
+        return b;
+    } else {
+        return c;
+    }
+}
+
 function* quickSortHelper(start, end) {
     if (start >= end) {
         if (start == end) {
@@ -190,11 +200,17 @@ function* quickSortHelper(start, end) {
         return;
     }
 
-    let pivotIndex = start;
-    let pivotValue = bars[end];
+    let mid = Math.floor((start + end) / 2);
+    let pivotIndex = medianOfThree(start, mid, end);
+    let pivotValue = bars[pivotIndex];
+
+    // Move the pivot to the end
+    swapElements(bars, pivotIndex, end);
+    pivotIndex = start;
     indexPivot = end;
 
     for (let i = start; i < end; i++) {
+        playSound((bars[i] + bars[end]) / 2);
         yield { current: i, compare: end, position: pivotIndex };
         if (bars[i] < pivotValue) {
             swapElements(bars, i, pivotIndex);
