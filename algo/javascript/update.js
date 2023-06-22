@@ -1,24 +1,16 @@
+const COMPLEXITY_COLORS = {
+    '1': '#3CB043',
+    'log(n)': '#ADFF2F',
+    'n': '#FFD700',
+    'n log(n)': '#FF8C00',
+    'n^2': 'red'
+};
+
 function updateComplexityCell(cell, complexity) {
     cell.innerText = `O(${complexity})`;
-    switch (complexity) {
-        case '1':
-            cell.style.border = '2px solid #008000';
-            break;
-        case 'log(n)':
-            cell.style.border = '2px solid #ADFF2F';
-            break;
-        case 'n':
-            cell.style.border = '2px solid #FFD700';
-            break;
-        case 'n log(n)':
-            cell.style.border = '2px solid #FF8C00';
-            break;
-        case 'n^2':
-        default:
-            cell.style.border = '2px solid red';
-            break;
-    }
+    cell.style.border = `2px solid ${COMPLEXITY_COLORS[complexity] || COMPLEXITY_COLORS['n^2']}`;
 }
+
 
 function adjustBorder(firstElement, secondElement) {
     if (firstElement.style.borderColor === secondElement.style.borderColor) {
