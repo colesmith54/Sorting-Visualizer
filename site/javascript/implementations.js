@@ -264,7 +264,46 @@ const algoSortCode = {
     return mergeSortHelper(arr);
 }
 // See optimized code for
-// memory usage improvement`
+// memory usage improvement`,
+'bogo': `function bogoSort(arr) {
+
+    // Helper function to shuffle an array
+    function shuffle(array) {
+        let counter = array.length;
+
+        while (counter > 0) {
+            let index = Math.floor(Math.random() * counter);
+
+            counter--;
+
+            let temp = array[counter];
+            array[counter] = array[index];
+            array[index] = temp;
+        }
+    };
+
+    // Function to check if array is sorted
+    function isSorted(array) {
+        for (let i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                return false;
+            }
+        }
+
+        return true;
+    };
+
+    // Keep shuffling the array until it is sorted
+    while (!isSorted(arr)) {
+        shuffle(arr);
+    }
+
+    return arr;
+}
+// This is a randomized bogosort because it does not
+// keep track of which permutations it has already tried
+
+// See optimized implementation for deterministic verison`
 }
 
 const optimizedAlgoSortCode = {
@@ -453,5 +492,45 @@ const optimizedAlgoSortCode = {
 
     mergeSortHelper(0, arr.length - 1);
     return arr;
+}`,
+'bogo': `function optimizedBogoSort(arr) {
+
+    // Function to check if array is sorted
+    function isSorted(array) {
+        for (let i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                return false;
+            }
+        }
+        return true;
+    };
+
+    // Uses generator function to not calcuate all
+    // permutations at once, but only up until one is sorted
+    function* permute(array, l = 0, r = array.length - 1) {
+        if (l === r) {
+            yield array.slice();
+        } else {
+            for (let i = l; i <= r; i++) {
+                // swap
+                [array[l], array[i]] = [array[i], array[l]];
+
+                yield* permute(array, l + 1, r);
+
+                // backtrack
+                [array[l], array[i]] = [array[i], array[l]];
+            }
+        }
+    }
+
+    // Go through all permutations of the array until we find a sorted one
+    for (let perm of permute(arr)) {
+        if (isSorted(perm)) {
+            return perm;
+        }
+    }
+
+    // If we haven't returned inside the loop, something went wrong.
+    throw new Error("Could not sort array");
 }`
 }

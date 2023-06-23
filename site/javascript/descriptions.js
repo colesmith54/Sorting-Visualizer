@@ -36,23 +36,30 @@ const descriptions = {
     },
     'heap': {
         description: 'Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure. The algorithm orders the elements by first building a max heap and then repeatedly extracts the maximum from the heap and swaps it with the last unsorted element, reducing the size of the heap by one each time.',
-        bestTime: 'n log(n)',
-        avgTime: 'n log(n)',
-        worstTime: 'n log(n)',
+        bestTime: 'n * log(n)',
+        avgTime: 'n * log(n)',
+        worstTime: 'n * log(n)',
         space: '1'
     },
     'quick': {
         description: 'Quick Sort is an efficient, recursive, comparison-based sorting algorithm. It operates by dividing the input into two smaller arrays around a chosen pivot element. The process is then repeated for the smaller arrays.',
-        bestTime: 'n log(n)',
-        avgTime: 'n log(n)',
+        bestTime: 'n * log(n)',
+        avgTime: 'n * log(n)',
         worstTime: 'n^2',
         space: 'log(n)'
     },
     'merge': {
         description: 'Merge Sort is an efficient, stable, comparison-based sorting algorithm. It operates by dividing the unsorted list into n sublists, each containing one element, and then repeatedly merging sublists to produce newly sorted sublists until there is only one sublist remaining. This process results in a list that is sorted.',
-        bestTime: 'n log(n)',
-        avgTime: 'n log(n)',
-        worstTime: 'n log(n)',
+        bestTime: 'n * log(n)',
+        avgTime: 'n * log(n)',
+        worstTime: 'n * log(n)',
         space: 'n'
+    },
+    'bogo': {
+        description: 'Randomized BogoSort, also known as permutation sort, stupid sort, monkey sort, or shotgun sort, is an exceptionally ineffective sorting algorithm based on the generate-and-test paradigm. It works by generating random permutations of its input until it finds one that is sorted. It is only used for educational purposes and as a benchmark for what not to do in a sorting algorithm.',
+        bestTime: 'n',
+        avgTime: 'n * n!',
+        worstTime: '∞',
+        space: '1'
     }
 };

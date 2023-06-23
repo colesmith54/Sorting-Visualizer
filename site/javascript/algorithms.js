@@ -287,6 +287,54 @@ function* mergeSort(low = 0, high = bars.length - 1) {
     }
 }
 
+// Helper function to shuffle an array
+function shuffle(array) {
+    let counter = array.length;
+
+    while (counter > 0) {
+        let index = Math.floor(Math.random() * counter);
+
+        counter--;
+
+        let temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+};
+
+// Function to check if array is sorted
+function* isSorted(array) {
+    for (let i = 0; i < array.length - 1; i++) {
+        playSound((bars[i] + bars[i + 1]) / 2);
+        yield { current: i, compare: i + 1 };
+        if (array[i] > array[i + 1]) {
+            return false;
+        }
+    }
+
+    return true;
+};
+
+// Randomized BogoSort algorithm
+function* bogoSort() {
+    let sorted = false;
+
+    while (!sorted) {
+        shuffle(bars);
+        let result = yield* isSorted(bars);
+
+        // If `isSorted` returns true, then exit the loop.
+        if (result) {
+            sorted = true;
+        }
+    }
+
+    // Handle verification for all bars once sorted
+    for (let i = 0; i < bars.length; i++) {
+        handleVerifiedBar(i);
+    }
+}
+
 function* verifySort() {
     const len = bars.length;
     for (let i = 0; i < len - 1; i++) {

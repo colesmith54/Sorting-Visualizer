@@ -16,6 +16,7 @@ function setupSortGenerators() {
         heap: heapSort,
         merge: mergeSort,
         quick: quickSort,
+        bogo: bogoSort
     };
 }
 
