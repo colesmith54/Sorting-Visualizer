@@ -64,37 +64,24 @@ function updateArrayDetails() {
     renderArray();
 }
 
-function handleCustomArrayInput() {
-    
-    let arrayInputField = document.getElementById('array-input');
-    let isValid = false;
-
+function getInputArray(arrayInputField) {
     if (arrayInputField.value !== '') {
-        inputArray = arrayInputField.value.split(',').filter(item => item.trim() !== '').map(Number);
-        isValid = inputArray.every(Number.isFinite);
+        return arrayInputField.value.split(',').filter(item => item.trim() !== '').map(Number);
     } else {
-        inputArray = [];
+        return [];
     }
-    
-    bars = [];
-    size = inputArray.length;
+}
 
-    if (isValid) {
-        size = inputArray.length;
-        for (let i = 0; i < size; i++) {
-            bars.push(map(inputArray[i], 0, Math.max(...inputArray), 1, 100));
-        }
-        renderArray();
-        document.getElementById("error").textContent = "";
+function convertToBars(inputArray) {
+    let bars = [];
+    for (let i = 0; i < inputArray.length; i++) {
+        bars.push(map(inputArray[i], 0, Math.max(...inputArray), 1, 100));
     }
-    else {
-        updateButtonState('start', 'btn btn-secondary', true, 'Start');
-        if (size > 0) {
-            document.getElementById("error").textContent = "Please enter valid numbers separated by commas.";
-        }
-    }
+    return bars;
+}
 
-    if (size > 1) {
+function updateUI(size, isValid) {
+    if (size > 1 && isValid) {
         updateButtonState('start', 'btn btn-primary', false, 'Start');
     } else {
         updateButtonState('start', 'btn btn-secondary', true, 'Start');
@@ -102,6 +89,26 @@ function handleCustomArrayInput() {
 
     document.getElementById('size').disabled = true;
     document.getElementById('array-io').style.display = 'unset';
+}
+
+function handleCustomArrayInput() {
+    let arrayInputField = document.getElementById('array-input');
+    let inputArray = getInputArray(arrayInputField);
+    let isValid = inputArray.every(Number.isFinite);
+    let size = inputArray.length;
+
+    bars = convertToBars(inputArray);
+    
+    if (isValid) {
+        renderArray();
+        document.getElementById("error").textContent = "";
+    } else {
+        if (size > 0) {
+            document.getElementById("error").textContent = "Please enter valid numbers separated by commas.";
+        }
+    }
+
+    updateUI(size, isValid);
 }
 
 function handleGeneratedArrayInput() {
