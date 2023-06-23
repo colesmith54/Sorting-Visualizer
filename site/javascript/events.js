@@ -69,32 +69,6 @@ function themeButtonHandler() {
     document.documentElement.setAttribute('data-bs-theme', (isDark ? 'dark' : 'light'));
 };
 
-function arrayInputHandler() {
-    inputArray = this.value.split(',').filter(item => item.trim() !== '').map(Number);
-    let isValid = inputArray.every(Number.isFinite);
-    
-    bars = [];
-    size = inputArray.length;
-
-    if (isValid && size > 1) {
-        console.log(inputArray)
-        size = inputArray.length;
-        for (let i = 0; i < size; i++) {
-            bars.push(map(inputArray[i], 0, Math.max(...inputArray), 1, 100));
-        }
-        renderArray();
-        updateButtonState('start', 'btn btn-primary', false, 'Start');
-        document.getElementById("error").textContent = "";
-    } else if (isValid) {
-        updateButtonState('start', 'btn btn-secondary', true, 'Start');
-    } else {
-        updateButtonState('start', 'btn btn-secondary', true, 'Start');
-        document.getElementById("error").textContent = "Please enter valid numbers separated by commas.";
-    }
-    document.getElementById('size').disabled = true;
-    document.getElementById('array-io').style.display = 'unset';
-}
-
 // Event listeners
 document.getElementById('algorithm').addEventListener('change', function () {
     updateAlgorithmDetails(this.value);
