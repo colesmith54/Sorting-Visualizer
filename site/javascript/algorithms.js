@@ -235,7 +235,7 @@ function* quickSort() {
 }
 
 // Merge function merges two sorted sub-arrays of bars
-function* merge(low, mid, high) {
+function* merge(low, mid, high, isFinalMerge) {
     let start = low;
     let start2 = mid + 1;
     let tempArray = [];
@@ -265,6 +265,11 @@ function* merge(low, mid, high) {
         bars[i] = tempArray[j];
         playSound((bars[i] + bars[j]) / 2);
         yield { current: i, comapre: j };
+
+        // For visual purposes only
+        if (isFinalMerge) {
+            handleVerifiedBar(i);
+        }
     }
 }
 
@@ -278,7 +283,7 @@ function* mergeSort(low = 0, high = bars.length - 1) {
         yield* mergeSort(mid + 1, high);
 
         // Merge the sorted halves
-        yield* merge(low, mid, high);
+        yield* merge(low, mid, high, low == 0 && high == bars.length - 1);
     }
 }
 
