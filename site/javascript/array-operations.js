@@ -65,17 +65,41 @@ function updateArrayDetails() {
 }
 
 function handleCustomArrayInput() {
-    inputArray = document.getElementById('array-input').value.split(',').filter(item => item.trim() !== '').map(Number);
+    
+    let arrayInputField = document.getElementById('array-input');
+    let isValid = false;
+
+    if (arrayInputField.value !== '') {
+        inputArray = arrayInputField.value.split(',').filter(item => item.trim() !== '').map(Number);
+        isValid = inputArray.every(Number.isFinite);
+    } else {
+        inputArray = [];
+    }
+    
+    bars = [];
     size = inputArray.length;
-    if (document.getElementById('array-input').value != '') {
+
+    if (isValid) {
+        size = inputArray.length;
         for (let i = 0; i < size; i++) {
             bars.push(map(inputArray[i], 0, Math.max(...inputArray), 1, 100));
         }
+        renderArray();
+        document.getElementById("error").textContent = "";
     }
-    console.log(inputArray)
-    if(inputArray.length < 2) {
+    else {
+        updateButtonState('start', 'btn btn-secondary', true, 'Start');
+        if (size > 0) {
+            document.getElementById("error").textContent = "Please enter valid numbers separated by commas.";
+        }
+    }
+
+    if (size > 1) {
+        updateButtonState('start', 'btn btn-primary', false, 'Start');
+    } else {
         updateButtonState('start', 'btn btn-secondary', true, 'Start');
     }
+
     document.getElementById('size').disabled = true;
     document.getElementById('array-io').style.display = 'unset';
 }

@@ -3,7 +3,7 @@ let arrayType = 'randomWO'
 let audioContext = new (window.AudioContext || window.webkitAudioContext)();
 let bars = [];
 let currentSortGenerator = null;
-let inputArray;
+let inputArray = [];
 let isPaused = false;
 let isRunning = false;
 let isVerifying = false;

@@ -91,6 +91,8 @@ function arrayInputHandler() {
         updateButtonState('start', 'btn btn-secondary', true, 'Start');
         document.getElementById("error").textContent = "Please enter valid numbers separated by commas.";
     }
+    document.getElementById('size').disabled = true;
+    document.getElementById('array-io').style.display = 'unset';
 }
 
 // Event listeners
@@ -116,7 +118,7 @@ document.getElementById('size').addEventListener('input', function () {
     renderArray();
 });
 document.getElementById('mute-button').addEventListener('click', muteButtonHandler);
-document.getElementById("array-input").addEventListener("input", arrayInputHandler);
+document.getElementById("array-input").addEventListener("input", updateArrayDetails);
 document.getElementById('copy-code').addEventListener('click', function () {
     navigator.clipboard.writeText(algoSortCode[algorithm]);
 });
