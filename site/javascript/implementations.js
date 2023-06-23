@@ -72,7 +72,7 @@ const algoSortCode = {
     return arr;
 }`,
 
-'minMax': `function minmaxSort(arr) {
+'minMax': `function minMaxSort(arr) {
 
     const len = arr.length;
 
@@ -134,7 +134,6 @@ const algoSortCode = {
         }
 
         swapped = false;
-        end--;
 
         // Backward pass
         for(let i = len - 1; i >= 0; i--) {
@@ -145,8 +144,6 @@ const algoSortCode = {
                 swapped = true;
             }
         }
-
-        start++;
     }
 
     return arr;
@@ -236,7 +233,38 @@ const algoSortCode = {
 }
 // Always using the end element can produce consistently
 // bad pivots when the array is already almost sorted.
-// See optimized code for use of the median element as a pivot.`
+// See optimized code for use of the median element as a pivot.`,
+'merge': `function mergeSort(arr) {
+
+    // The function for merging two sorted arrays
+    function merge(leftArr, rightArr) {
+        let sorted = [];
+        while (leftArr.length && rightArr.length) {
+            if (leftArr[0] <= rightArr[0]) {
+                sorted.push(leftArr.shift());
+            } else {
+                sorted.push(rightArr.shift());
+            }
+        }
+        return sorted.concat(leftArr.slice().concat(rightArr.slice()));
+    }
+
+    // The function for sorting arrays by splitting them, sorting each half,
+    // and then merging them together
+    function mergeSortHelper(arr) {
+        if (arr.length <= 1) {
+            return arr;
+        }
+        let middle = Math.floor(arr.length / 2);
+        let leftArr = arr.slice(0, middle);
+        let rightArr = arr.slice(middle);
+        return merge(mergeSortHelper(leftArr), mergeSortHelper(rightArr));
+    }
+
+    return mergeSortHelper(arr);
+}
+// See optimized code for
+// memory usage improvement`
 }
 
 const optimizedAlgoSortCode = {
@@ -267,7 +295,7 @@ const optimizedAlgoSortCode = {
 'selection': `// see "Minmax Sort"
 // see "Heap Sort"`,
 
-'insertion': `function insertionSort(arr) {
+'insertion': `function optimizedInsertionSort(arr) {
 
     const len = arr.length;
 
@@ -381,6 +409,49 @@ const optimizedAlgoSortCode = {
     }
 
     quickSortHelper(0, arr.length - 1);
+    return arr;
+}`,
+'merge': `function optimizedMergeSort(arr) {
+    // Temporary array used for merging subarrays
+    let temp = Array(arr.length);
+
+    // The function for merging two sorted subarrays
+    function merge(leftStart, mid, rightEnd) {
+        let leftEnd = mid;
+        let rightStart = mid + 1;
+        let left = leftStart;
+        let right = rightStart;
+
+        // Index for writing to the temporary array
+        for (let i = leftStart; i <= rightEnd; i++) {
+            // If left run head exists and is <= existing right run head
+            if (left <= leftEnd && (right > rightEnd || arr[left] <= arr[right])) {
+                temp[i] = arr[left];
+                left++;
+            } else {
+                temp[i] = arr[right];
+                right++;
+            }
+        }
+
+        // Copy the sorted subarray from the temporary array back to the original array
+        for (let i = leftStart; i <= rightEnd; i++) {
+            arr[i] = temp[i];
+        }
+    }
+
+    // The function for sorting arrays by splitting them, sorting each half,
+    // and then merging them together
+    function mergeSortHelper(leftStart, rightEnd) {
+        if (leftStart < rightEnd) {
+            let mid = Math.floor((leftStart + rightEnd) / 2);
+            mergeSortHelper(leftStart, mid);
+            mergeSortHelper(mid + 1, rightEnd);
+            merge(leftStart, mid, rightEnd);
+        }
+    }
+
+    mergeSortHelper(0, arr.length - 1);
     return arr;
 }`
 }

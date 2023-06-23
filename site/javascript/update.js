@@ -23,6 +23,7 @@ function adjustBorder(firstElement, secondElement) {
 }
 
 function updateAlgorithmDetails(algorithmKey) {
+    algorithm = algorithmKey
     const algorithmInfo = descriptions[algorithmKey];
     if (algorithmInfo) {
         document.getElementById('algorithm-title').innerText = `${algorithmKey.charAt(0).toUpperCase()}${algorithmKey.slice(1)} Sort`;

@@ -14,7 +14,8 @@ function setupSortGenerators() {
         minMax: minMaxSort,
         insertion: insertionSort,
         heap: heapSort,
-        quick: quickSort
+        merge: mergeSort,
+        quick: quickSort,
     };
 }
 

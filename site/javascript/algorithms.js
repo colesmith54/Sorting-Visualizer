@@ -234,6 +234,54 @@ function* quickSort() {
     yield* quickSortHelper(0, bars.length - 1);
 }
 
+// Merge function merges two sorted sub-arrays of bars
+function* merge(low, mid, high) {
+    let start = low;
+    let start2 = mid + 1;
+    let tempArray = [];
+    let index = 0;
+
+    while(start <= mid && start2 <= high) {
+        // Yield control back to the visualizer
+        playSound((bars[start] + bars[start2]) / 2);
+        yield { current: start, compare: start2};
+
+        if (bars[start] <= bars[start2]) {
+            tempArray[index++] = bars[start++];
+        } else {
+            tempArray[index++] = bars[start2++];
+        }
+    }
+
+    while(start <= mid) {
+        tempArray[index++] = bars[start++];
+    }
+
+    while(start2 <= high) {
+        tempArray[index++] = bars[start2++];
+    }
+
+    for(let i = low, j = 0; i <= high; i++, j++) {
+        bars[i] = tempArray[j];
+        playSound((bars[i] + bars[j]) / 2);
+        yield { current: i, comapre: j };
+    }
+}
+
+// Merge Sort algorithm
+function* mergeSort(low = 0, high = bars.length - 1) {
+    if (low < high) {
+        const mid = low + Math.floor((high - low) / 2);
+
+        // Recursively sort the two halves
+        yield* mergeSort(low, mid);
+        yield* mergeSort(mid + 1, high);
+
+        // Merge the sorted halves
+        yield* merge(low, mid, high);
+    }
+}
+
 function* verifySort() {
     const len = bars.length;
     for (let i = 0; i < len - 1; i++) {
