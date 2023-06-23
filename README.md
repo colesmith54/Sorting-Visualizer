@@ -4,9 +4,9 @@
 This is a lightweight, dynamic web application designed to help users understand the functioning of various sorting algorithms. By providing a real-time visualization of the sorting process, the application makes it easier to comprehend how different algorithms work and compare their efficiencies.
 
 ## Features
-- **Visualization of Sorting Algorithms**: The application supports several sorting algorithms, including Bubble, Selection, Insertion, Cocktail, MinMax, Heap, and Quick sort. The sorting process is visualized in real-time, allowing users to observe how each algorithm operates.
+- **Visualization of Sorting Algorithms**: The application supports several sorting algorithms, including Bubble, Selection, Insertion, Cocktail, MinMax, Heap, and Quick sort. The sorting process is visualized in real-time, accompanied with matching audio, allowing users to observe how each algorithm operates.
 
-- **Array Input Options**: Users can select the type of array to be sorted. Options include random arrays with or without duplicates, almost sorted arrays, reverse arrays, and the ability to input a custom array.
+- **Array Options**: Users can select the type of array to be sorted. Options include random arrays with or without duplicates, almost sorted arrays, reverse arrays, and the ability to input a custom array.
 
 - **Algorithm Information**: For each sorting algorithm, the application displays information about its time complexities (best, average, and worst-case) and its space complexity. This information aids users in understanding the efficiency of different algorithms.
 
@@ -16,7 +16,7 @@ This is a lightweight, dynamic web application designed to help users understand
 
 - **Adjustable Sorting Speed**: Users can customize the sorting speed as per their understanding and learning pace. This feature ensures a flexible and personalized learning experience.
 
-- **Customizable Array Size**: The application allows users to adjust the size of the array to be sorted. This flexibility helps in simulating various scenarios and observing the performance of sorting algorithms on different data sizes.
+- **Adjustable Array Size**: The application allows users to adjust the size of the array to be sorted. This flexibility helps in simulating various scenarios and observing the performance of sorting algorithms on different data sizes.
 
 - **Step-by-Step Option**: A 'Pause' and 'Next' feature is available for users who want to go through the sorting process step-by-step. This is especially beneficial for beginners who are trying to understand the intricacies of each sorting step.
 
