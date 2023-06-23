@@ -19,7 +19,8 @@ function updateBarColors(selectedBars) {
         if (Array.isArray(selectedBars.value.compare)) {
             for (const compareIndex of selectedBars.value.compare) {
                 if (compareIndex < size) {
-                    setColorToBar(selectedBars.value.compare, COLORS.COMPARE);
+                    console.log(selectedBars.value.compare)
+                    setColorToBar(compareIndex, COLORS.COMPARE);
                 }
             }
         } else {
@@ -60,7 +61,8 @@ function finalizeSort(step) {
                 nextSortStep();
             }
         }, 100);
+    } else {
+        updateButtonState('start', 'btn btn-secondary', true, 'Start');
+        updateButtonState('pause', 'btn btn-secondary', true, 'Pause');
     }
-    updateButtonState('start', 'btn btn-secondary', true, 'Start');
-    updateButtonState('pause', 'btn btn-secondary', true, 'Pause');
 }

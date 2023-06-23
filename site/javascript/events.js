@@ -38,7 +38,9 @@ function resetButtonHandler() {
     isVerifying = false;
 
     updateArrayDetails();
-    updateButtonState('start', 'btn btn-primary', false, 'Start');
+    if(bars.length > 1) {
+        updateButtonState('start', 'btn btn-primary', false, 'Start');
+    }
     updateButtonState('pause', 'btn btn-secondary', true, 'Pause');
     disableInputs(false);
     document.getElementById('array-output').value = "";
