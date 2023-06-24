@@ -2,7 +2,7 @@ const COMPLEXITY_COLORS = {
     '1': '#3CB043',
     'log(n)': '#ADFF2F',
     'n': '#FFD700',
-    'n log(n)': '#FF8C00',
+    'n * log(n)': '#FF8C00',
     'n^2': 'red'
 };
 
