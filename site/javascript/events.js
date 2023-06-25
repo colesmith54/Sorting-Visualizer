@@ -48,7 +48,7 @@ function resetButtonHandler() {
 
 function updateButtonState(buttonid, className, disabled, innerText) {
     let btn = document.getElementById(buttonid);
-    btn.className = `btn ${className}`;
+    btn.className = `btn ${className} mx-1 mt-3`;
     btn.disabled = disabled;
     btn.innerText = innerText;
 }
