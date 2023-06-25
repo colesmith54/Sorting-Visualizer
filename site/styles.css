@@ -111,6 +111,12 @@ nav {
     max-width: 50%;
 }
 
+@media (max-width: 705px) {
+    #title-container {
+        max-width: 100%;
+    }
+}
+
 #button-group {
     display: inline-block !important;
     margin: 5px;
