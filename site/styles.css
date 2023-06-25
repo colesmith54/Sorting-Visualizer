@@ -108,7 +108,16 @@ nav {
 }
 
 #button-group, #title-container {
-    max-width: 50%;  /* Adjust as needed */
+    max-width: 50%;
+}
+
+#button-group {
+    display: inline-block !important;
+    margin: 5px;
+}
+
+#button-group button {
+    text-align: center;
 }
 
 pre[class*="language-"] {
@@ -170,8 +179,7 @@ td {
 button#theme-toggle, button#mute-button{
     align-self: center;
     padding: 10px;
-    margin-left: 15px;
-    margin-top: 15px;
+    margin: 5px;
 }
 
 .dark-mode .language-javascript {

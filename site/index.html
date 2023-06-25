@@ -12,9 +12,9 @@
 </head>
 
 <body>
-    <nav class="navbar sticky-top bg-body-tertiary border-bottom pb-4 d-flex flex-row-reverse justify-content-evenly flex-wrap-reverse">
-        <button id="mute-button" class="btn btn-transparent"><svg xmlns="http://www.w3.org/2000/svg" width="36"
-            height="36" fill="currentColor" class="bi bi-volume-up" viewBox="0 0 16 16">
+    <nav class="navbar sticky-top bg-body-tertiary border-bottom pb-4 d-flex flex-row-reverse justify-content-around flex-wrap-reverse">
+        <button id="mute-button" class="btn btn-transparent"><svg xmlns="http://www.w3.org/2000/svg" width="32"
+            height="32" fill="currentColor" class="bi bi-volume-up" viewBox="0 0 16 16">
             <path
                 d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z" />
             <path
@@ -28,9 +28,9 @@
             </svg>
         </button>
         <div id="button-group" class="d-flex justify-content-between flex-nowrap">
-            <button id="start" class="btn btn-primary mx-1 mt-3">Start</button>
-            <button id="pause" class="btn btn-warning mx-1 mt-3">Pause</button>
-            <button id="reset" class="btn btn-danger mx-1 mt-3">Reset</button>
+            <button id="start" class="btn btn-primary mx-auto mt-3">Start</button>
+            <button id="pause" class="btn btn-warning mx-auto mt-3">Pause</button>
+            <button id="reset" class="btn btn-danger mx-auto mt-3">Reset</button>
         </div>
         <div id="title-container" class="d-flex justify-content-center w-100 stretch">
             <h1 class="text-center mt-4">Sorting Algorithm Visualizer</h1>
@@ -41,7 +41,7 @@
             <section id="controls" class="d-flex flex-wrap justify-content-between mt-4">
                 <div id="vert-group">
                     <div>
-                        <label for="algorithm">Choose a sorting algorithm:</label>
+                        <label for="algorithm">Choose algorithm:</label>
                         <select id="algorithm" class="form-select custom-select">
                             <option disabled>-------- O(n^2) --------</option>
                             <option value="bubble">Bubble Sort</option>
@@ -59,7 +59,7 @@
                     </div>
 
                     <div>
-                        <label for="array-type">Choose an array type:</label>
+                        <label for="array-type">Choose array type:</label>
                         <select id="array-type" class="form-select custom-select">
                             <option value="randomWO">Random w/o Duplicates</option>
                             <option value="randomW">Random w/ Duplicates</option>

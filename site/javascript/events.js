@@ -1,3 +1,31 @@
+window.addEventListener('DOMContentLoaded', (event) => {
+    // Check size on page load
+    checkSize();
+});
+
+window.addEventListener('resize', (event) => {
+    // Check size whenever window is resized
+    checkSize();
+});
+
+function checkSize(){
+    let startButton = document.getElementById("start");
+    let pauseButton = document.getElementById("pause");
+    let resetButton = document.getElementById("reset");
+
+    if (window.innerWidth <= 432){
+        // if the window is less than or equal to 768px, add 'btn-sm' class
+        startButton.classList.add('btn-sm');
+        pauseButton.classList.add('btn-sm');
+        resetButton.classList.add('btn-sm');
+    } else {
+        // if the window is greater than 768px, add 'btn-lg' class
+        startButton.classList.remove('btn-sm');
+        pauseButton.classList.remove('btn-sm');
+        resetButton.classList.remove('btn-sm');
+    }
+}
+
 // Event handlers for buttons
 function startButtonHandler() {
     isRunning = true;
@@ -51,6 +79,7 @@ function updateButtonState(buttonid, className, disabled, innerText) {
     btn.className = `btn ${className} mx-1 mt-3`;
     btn.disabled = disabled;
     btn.innerText = innerText;
+    checkSize();
 }
 
 function disableInputs(isDisable) {
