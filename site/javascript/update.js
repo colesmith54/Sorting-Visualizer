@@ -26,7 +26,8 @@ function updateAlgorithmDetails(algorithmKey) {
     algorithm = algorithmKey
     const algorithmInfo = descriptions[algorithmKey];
     if (algorithmInfo) {
-        document.getElementById('algorithm-title').innerText = `${algorithmKey.charAt(0).toUpperCase()}${algorithmKey.slice(1)} Sort`;
+        console.log(document.getElementById(algorithmKey))
+        document.getElementById('algorithm-title').innerText = document.getElementById(`algo-${algorithmKey}`).innerText;
         document.getElementById('algorithm-description').innerText = algorithmInfo.description;
 
         const bestCaseElement = document.getElementById('best-case');

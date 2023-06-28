@@ -114,14 +114,13 @@ function* minMaxSort() {
 }
 
 // Insertion sort algorithm
-function* insertionSort() {
-    const len = bars.length;
-    for (let i = 1; i < len; i++) {
+function* insertionSort(start = 0, end = bars.length - 1) {
+    for (let i = start + 1; i <= end; i++) {
         let key = i;
         let keybar = bars[i];
         let j = i - 1;
 
-        while (j >= 0 && bars[j] > keybar) {
+        while (j >= start && bars[j] > keybar) {
             playSound((bars[key] + bars[j]) / 2);
             if (key !== i) {
                 yield { current: key, compare: j, position: i };
@@ -333,6 +332,31 @@ function* bogoSort() {
     for (let i = 0; i < bars.length; i++) {
         handleVerifiedBar(i);
     }
+}
+
+function min(a, b) {
+    return (a < b) ? a : b;
+}
+
+function* timSort() {
+    const len = bars.length;
+
+    // Sort individual subarrays of size RUN
+    for (let i = 0; i < len; i += RUN)
+        yield* insertionSort(i, min((i + RUN - 1), (len - 1)));
+
+    // Start merging from size RUN (or 32). It will merge to form size 64, then 128, 256 and so on ....
+    for (let size = RUN; size < len; size = 2 * size) {
+        for (let left = 0; left < len; left += size) {
+            let mid = min(left + size - 1, len-1);
+            let right = min(left + 2*size - 1, len-1);
+    
+            // Merge sub array bars[left.....mid] & bars[mid+1....right]
+            if(mid < right){
+                yield* merge(left, mid, right, left == 0 && right == len - 1);
+            }
+        }
+    }    
 }
 
 function* verifySort() {

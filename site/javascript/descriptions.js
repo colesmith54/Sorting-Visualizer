@@ -61,5 +61,13 @@ const descriptions = {
         avgTime: 'n * n!',
         worstTime: '∞',
         space: '1'
+    },
+    'tim': {
+        description: 'TimSort is a hybrid sorting algorithm inspired by insertion sort and merge sort. Runs of data are first sorted using insertion sort and then merged together.',
+        bestTime: 'n',
+        avgTime: 'n * log(n)',
+        worstTime: 'n * log(n)',
+        space: 'n'
     }
+    
 };
