@@ -303,7 +303,87 @@ const algoSortCode = {
 // This is a randomized bogosort because it does not
 // keep track of which permutations it has already tried
 
-// See optimized implementation for deterministic verison`
+// See optimized implementation for deterministic verison`,
+'tim': `function timSort(arr) {
+    // Increase or decrease depending on size of the data,
+    // but typically you want a power of 2.
+    const RUN = 32;
+
+    // Function to find minimum of two numbers
+    function min(a, b) {
+        return (a < b) ? a : b;
+    }
+
+    // Perform insertion sort
+    function insertionSort(arr, left, right) {
+        for(let i = left + 1; i <= right; i++) {
+            let temp = arr[i];
+            let j = i - 1;
+            while(arr[j] > temp && j >= left) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = temp;
+        }
+    }
+
+    // Merge function to merge the sorted runs
+    function merge(arr, l, m, r) {
+        let len1 = m - l + 1;
+        let len2 = r - m;
+        let left = new Array(len1);
+        let right = new Array(len2);
+        for(let x = 0; x < len1; x++) {
+            left[x] = arr[l + x];
+        }
+        for(let x = 0; x < len2; x++) {
+            right[x] = arr[m + 1 + x];
+        }
+
+        let i = 0;
+        let j = 0;
+        let k = l;
+
+        while(i < len1 && j < len2) {
+            if(left[i] <= right[j]) {
+                arr[k] = left[i];
+                i++;
+            } else {
+                arr[k] = right[j];
+                j++;
+            }
+            k++;
+        }
+
+        while(i < len1) {
+            arr[k] = left[i];
+            k++;
+            i++;
+        }
+
+        while(j < len2) {
+            arr[k] = right[j];
+            k++;
+            j++;
+        }
+    }
+
+    // Main function to implement Timsort
+    const len = arr.length;
+    for(let i = 0; i < len; i += RUN) {
+        insertionSort(arr, i, min((i + 31), (len - 1)));
+    }
+
+    for(let size = RUN; size < len; size = 2 * size) {
+        for(let left = 0; left < len; left += 2 * size) {
+            let mid = left + size - 1;
+            let right = min((left + 2 * size - 1), (len - 1));
+            merge(arr, left, mid, right);
+        }
+    }
+
+    return arr;
+}`
 }
 
 const optimizedAlgoSortCode = {
@@ -532,5 +612,8 @@ const optimizedAlgoSortCode = {
 
     // If we haven't returned inside the loop, something went wrong.
     throw new Error("Could not sort array");
-}`
+}`,
+'tim': `
+// Timsort is already one of the most optimized sorting algorithms.
+// Can be improved by adjusting the value of RUN for the data.`
 }
