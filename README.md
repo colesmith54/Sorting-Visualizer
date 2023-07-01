@@ -4,7 +4,7 @@
 This is a lightweight, dynamic web application designed to help users understand the functioning of various sorting algorithms. By providing a real-time visualization of the sorting process, the application makes it easier to comprehend how different algorithms work and compare their efficiencies.
 
 ## Features
-- **Visualization of Sorting Algorithms**: The application supports Bubble, Selection, Insertion, Cocktail, MinMax, Heap, Merge, and Quick sort. The sorting process is visualized in real-time, accompanied with matching audio, allowing users to observe how each algorithm operates.
+- **Visualization of Sorting Algorithms**: The application supports Bubble, Selection, Insertion, Cocktail, MinMax, Heap, Merge, Quick, Bogo, and Timsort. The sorting process is visualized in real-time, accompanied with matching audio, allowing users to observe how each algorithm operates.
 
 - **Array Options**: Users can select the type of array to be sorted. Options include random arrays with or without duplicates, almost sorted arrays, reverse arrays, and the ability to input a custom array.
 
