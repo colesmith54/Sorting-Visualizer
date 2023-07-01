@@ -347,7 +347,7 @@ function* timSort() {
 
     // Start merging from size RUN (or 32). It will merge to form size 64, then 128, 256 and so on ....
     for (let size = RUN; size < len; size = 2 * size) {
-        for (let left = 0; left < len; left += size) {
+        for (let left = 0; left < len; left += 2 * size) {
             let mid = min(left + size - 1, len-1);
             let right = min(left + 2*size - 1, len-1);
     
