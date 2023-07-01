@@ -328,7 +328,6 @@ function* bogoSort() {
         }
     }
 
-    // Handle verification for all bars once sorted
     for (let i = 0; i < bars.length; i++) {
         handleVerifiedBar(i);
     }
@@ -352,7 +351,7 @@ function* timSort() {
             let right = min(left + 2*size - 1, len-1);
     
             // Merge sub array bars[left.....mid] & bars[mid+1....right]
-            if(mid < right){
+            if (mid < right) {
                 yield* merge(left, mid, right, left == 0 && right == len - 1);
             }
         }
