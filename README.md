@@ -32,7 +32,10 @@ To use the application, follow these steps:
 8. Access the standard or optimized code implementation of the selected sorting algorithm.
 
 ## Contributing
-I welcome contributions to sort-algo! If you have suggestions for improving the application or want to report a bug, please open an issue or submit a pull request.
+Contributions are welcome. If you have suggestions for improving the application or want to report a bug, please open an issue or submit a pull request.
 
 ## License
 This project is licensed under the terms of the MIT license.
+
+## Contact
+For questions, suggestions, or any other inquiries, please [contact me](mailto:colesmith5400@gmail.com).
