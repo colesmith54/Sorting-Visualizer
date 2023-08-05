@@ -1,5 +1,7 @@
 # Sorting Visualizer
 
+https://sort-algo-54.netlify.app
+
 ## Overview
 This is a lightweight, dynamic web application designed to help users understand the functioning of various sorting algorithms. By providing a real-time visualization of the sorting process, the application makes it easier to comprehend how different algorithms work and compare their efficiencies.
 
