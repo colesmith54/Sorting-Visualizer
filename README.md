@@ -40,4 +40,4 @@ Contributions are welcome. If you have suggestions for improving the application
 This project is licensed under the terms of the MIT license.
 
 ## Contact
-[Email](mailto:colesmith5400@gmail.com).
+[Email](mailto:colesmith5400@gmail.com)
